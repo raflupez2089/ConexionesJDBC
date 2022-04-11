@@ -16,17 +16,26 @@ public class ConexionJDBC {
 			/* Cargar en memoria la clase del driver jdbc
 			* Class.forName(String de conexion);  
 			* Driver de conexion depende del motor de base de datos */
-			String mysql = "com.mysql.jdbc.Driver";
-			String oracle = "oracle.jdbc.driver.OracleDriver";
-			String postgresql = "org.postgresql.Driver";
-			String mariadb = "com.mysql.jdbc.Driver";
-			Class.forName(mysql);
-			String urlMysql = "jdbc:mysql://localhost:3306/moonsys?useSSL=false";
-			String urlOracle = "jdbc:oracle:thin:@localhost:1521:XE";
-			String urlPostgresql = "jdbc:postgresql://localhost:5432/dbName";
-			String urlMariadb = "jdbc:mysql://localhost:3406/dbName";
+			String driver = "", url = "";
+			//--->Mysql
+			driver = "com.mysql.jdbc.Driver";
+			url = "jdbc:mysql://localhost:3306/moonsys?useSSL=false";
+			/*---> Oracle
+			driver = "oracle.jdbc.driver.OracleDriver";
+			url = "jdbc:oracle:thin:@localhost:1521:XE";*/
+			/*--->postgress
+			driver = "org.postgresql.Driver";
+			url = "jdbc:postgresql://localhost:5432/dbName";*/
+			/*---->mariadb
+			driver = "com.mysql.jdbc.Driver";
+			url = "jdbc:mysql://localhost:3406/dbName";*/
+			/*---->DB2
+			driver = "jdbc:db2://host:port/dbName";
+			url = "jdbc:db2://sysmvs1.stl.ibm.com:5021/STLEC";			*/
+			Class.forName(driver);
+			
 			//Crear la conexión a la bd
-			Connection conexion = (Connection) DriverManager.getConnection(urlMysql,"root","root");
+			Connection conexion = (Connection) DriverManager.getConnection(url,"root","root");
 			//creando objeto de 
 			Statement stmt = conexion.createStatement();
 			String query = "Select * from moonsys.usuario";

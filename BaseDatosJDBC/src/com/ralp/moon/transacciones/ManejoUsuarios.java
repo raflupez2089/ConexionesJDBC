@@ -12,7 +12,7 @@ public class ManejoUsuarios {
 		Connection conn = null;
 		try {
 			// Creamos la conexión
-			conn = JdbcDriverManager.getMySqlConnection();
+			conn = JdbcDriverManager.getConnection();
 			//Validamos que la conexion no tenga activo el autocomit, y si la tiene la inactivamos
 			if(conn.getAutoCommit()==true)
 				conn.setAutoCommit(false);

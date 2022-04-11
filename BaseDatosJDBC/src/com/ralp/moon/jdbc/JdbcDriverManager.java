@@ -13,6 +13,19 @@ import java.sql.Statement;
  * */
 
 public class JdbcDriverManager {
+	//Para cambiar base de datos, cambiar los parametros
+ 		/*---> Oracle
+		driver = "oracle.jdbc.driver.OracleDriver";
+		url = "jdbc:oracle:thin:@localhost:1521:XE";*/
+		/*--->postgress
+		driver = "org.postgresql.Driver";
+		url = "jdbc:postgresql://localhost:5432/dbName";*/
+		/*---->mariadb
+		driver = "com.mysql.jdbc.Driver";
+		url = "jdbc:mysql://localhost:3406/dbName";*/
+		/*---->DB2
+		driver = "jdbc:db2://host:port/dbName";
+		url = "jdbc:db2://sysmvs1.stl.ibm.com:5021/STLEC";*/
 	protected static String JDBC_CLASS = "com.mysql.jdbc.Driver";
 	protected static String JDBC_URL = "jdbc:mysql://localhost:3306/moonsys?useSSL=false";
 	protected static String JDBC_USER = "root";
@@ -20,7 +33,7 @@ public class JdbcDriverManager {
 	protected static Driver driver = null;
 	
 	//Se utiliza el synchronized para que la conexion la pueda usar solo un hilo a la vez
-	public static synchronized Connection getMySqlConnection() throws SQLException{	
+	public static synchronized Connection getConnection() throws SQLException{	
 		if(driver == null){
 			try{
 				//Se crea una instancia de la clase Class

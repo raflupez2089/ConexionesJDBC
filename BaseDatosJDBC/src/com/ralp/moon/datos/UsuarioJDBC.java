@@ -30,7 +30,7 @@ public class UsuarioJDBC {
 			int index = 1;
 			/*Para aplicar el concepto de transacciones, es decir, hacer commits y rollbacks se debe usar
 			la misma conexion activa de principio a fin*/
-			conn = (this.userCon != null)? this.userCon : JdbcDriverManager.getMySqlConnection();
+			conn = (this.userCon != null)? this.userCon : JdbcDriverManager.getConnection();
 			pstm = conn.prepareStatement(JDBC_INSERT);
 			pstm.setString(index++, usuario);
 			pstm.setString(index++, pass);
@@ -56,7 +56,7 @@ public class UsuarioJDBC {
 		int rowLines = 0;
 		try{
 			int index = 1;
-			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getMySqlConnection();
+			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getConnection();
 			pstm = conn.prepareStatement(JDBC_UPDATE);
 			pstm.setString(index++, usuario);
 			pstm.setString(index++, pass);
@@ -78,7 +78,7 @@ public class UsuarioJDBC {
 		PreparedStatement pstm = null;
 		int rowLines = 0;
 		try{
-			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getMySqlConnection();
+			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getConnection();
 			pstm = conn.prepareStatement(JDBC_DELETE);
 			pstm.setInt(1, idUsuario);
 			System.out.println("Ejecutando el delete");
@@ -99,7 +99,7 @@ public class UsuarioJDBC {
 		List listaUsuarios = new ArrayList<Usuario>();
 		Usuario usuario = null;
 		try{
-			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getMySqlConnection();
+			conn = (this.userCon != null) ? this.userCon : JdbcDriverManager.getConnection();
 			pstm = conn.prepareStatement(JDBC_SELECT);
 			rs = pstm.executeQuery();
 			while(rs.next()){
